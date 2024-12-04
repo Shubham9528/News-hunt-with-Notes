@@ -8,12 +8,12 @@ export default function Card({ search }) {
     
 
     useEffect(() => {
-        let intervalId;
+        
         console.log(process.env.API_KEY_MEDIASTACK);
         async function getNews() {
             try {
-                {/*Categories:business,technology,general,business,entertainment,health,science,technology,sports*/ }
-                const url = `http://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_API_KEY_MEDIASTACK}&languages=en&countries=us&categories=${search}&limit=100`;
+                
+                const url = `https://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_API_KEY_MEDIASTACK}&languages=en&countries=us&categories=${search}&limit=100`;
                 const response = await axios.get(url);
                 // setNews(response.data.articles);//for news_api
                 setNews(response.data.data);//for media_stack
@@ -21,13 +21,7 @@ export default function Card({ search }) {
                 console.error('Error fetching news:', error);
             }
         }
-
-       
-        getNews();
-        // intervalId = setInterval(getNews, 60000);
-           return () => {
-            // clearInterval(intervalId);
-        };
+        getNews();    
     }, [search]); 
 
     return (
