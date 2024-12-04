@@ -23,6 +23,7 @@ export default function Card({ search }) {
         }
         getNews();    
     }, [search]); 
+    
 
     return (
         <div className="flex flex-wrap justify-center gap-8">
