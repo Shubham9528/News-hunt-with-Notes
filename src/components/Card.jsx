@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
-// const API_KEY_NEWS_API = "d9dfbc339aba4d978d9a4f47873e0f80";
-const API_KEY_MEDIASTACK="26fafcb475df43e2254fcfed21fe74cd";
+
 export default function Card({ search }) {
     const [news, setNews] = useState([]);
     console.log(search);
@@ -10,11 +9,11 @@ export default function Card({ search }) {
 
     useEffect(() => {
         let intervalId;
-
+        console.log(process.env.API_KEY_MEDIASTACK);
         async function getNews() {
             try {
                 {/*Categories:business,technology,general,business,entertainment,health,science,technology,sports*/ }
-                const url = `http://api.mediastack.com/v1/news?access_key=${API_KEY_MEDIASTACK}&languages=en&countries=us&categories=${search}&limit=100`; 
+                const url = `http://api.mediastack.com/v1/news?access_key=${process.env.REACT_APP_API_KEY_MEDIASTACK}&languages=en&countries=us&categories=${search}&limit=100`;
                 const response = await axios.get(url);
                 // setNews(response.data.articles);//for news_api
                 setNews(response.data.data);//for media_stack
