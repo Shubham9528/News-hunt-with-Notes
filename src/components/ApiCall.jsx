@@ -14,7 +14,7 @@ export default function ApiCall() {
                 console.log(response.data.content); // Log the response for debugging
                 setNews(response.data.articles);
             } catch (error) {
-                console.error('Error fetching news:', error);
+                console.error('Error fetching News:', error);
             }
         }
 
