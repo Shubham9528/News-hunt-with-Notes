@@ -23,31 +23,22 @@ export default function NotesApp() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-  {/* Header */}
-  <Header />
-
-  {/* Main Content (CreateArea + Notes) */}
-  <main className="flex-grow px-4 py-6 sm:px-8 md:px-12">
-    <CreateArea onAdd={newNote} />
-
-    {/* Notes List */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-      {addNotes.map((data, index) => (
-        <Note
-          key={index}
-          id={index}
-          title={data.title}
-          content={data.content}
-          deleteNote={onDelete}
-        />
-      ))}
+    <div>
+      <Header />
+      <Footer />
+      <CreateArea onAdd={newNote} />
+      {addNotes.map((data, index) => {
+        return (
+          <Note
+            key={index}
+            id={index}
+            title={data.title}
+            content={data.content}
+            deleteNote={onDelete}
+          />
+        );
+      })}
     </div>
-  </main>
-
-  {/* Footer */}
-  <Footer />
-</div>
   );
 }
 
